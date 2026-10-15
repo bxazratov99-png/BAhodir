@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gazon Ekish va Parvarish Xizmati — Bepul Hisob-Kitob</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #e8f5e9 100%);
+        }
+        .custom-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+
+    <div class="max-w-xl w-full bg-white rounded-2xl custom-shadow overflow-hidden p-6 sm:p-10 border border-green-100">
+        
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-full mb-4">
+                <i class="fa-solid fa-leaf text-2xl"></i>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight">
+                Gazon Ekish va Landshaft Xizmati
+            </h1>
+            <p class="mt-2 text-sm text-gray-600">
+                Formani toʻldiring va <span class="font-semibold text-green-600">bepul konsultatsiya hamda smeta</span> hisob-kitobiga ega boʻling!
+            </p>
+        </div>
+
+        <!-- Form -->
+        <form id="leadForm" class="space-y-6" onsubmit="handleSubmit(event)">
+            
+            <!-- Step 1: Hudud turi -->
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                    1. Gazon ekiladigan hudud turi:
+                </label>
+                <div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                    <label class="cursor-pointer">
+                        <input type="radio" name="property_type" value="Hovli / Kottedj" class="peer sr-only" required>
+                        <div class="p-3 text-center rounded-xl border border-gray-200 peer-checked:border-green-600 peer-checked:bg-green-50 text-gray-700 font-medium hover:border-green-300 transition">
+                            🏡 Hovli / Kottedj
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="property_type" value="Tijorat obyekti" class="peer sr-only">
+                        <div class="p-3 text-center rounded-xl border border-gray-200 peer-checked:border-green-600 peer-checked:bg-green-50 text-gray-700 font-medium hover:border-green-300 transition">
+                            🏢 Tijorat obyekti
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="property_type" value="Katta hudud / Park" class="peer sr-only">
+                        <div class="p-3 text-center rounded-xl border border-gray-200 peer-checked:border-green-600 peer-checked:bg-green-50 text-gray-700 font-medium hover:border-green-300 transition">
+                            🌳 Katta park
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 2: Maydon hajmi -->
+            <div>
+                <label for="area" class="block text-sm font-semibold text-gray-700 mb-2">
+                    2. Taxminiy maydon hajmi:
+                </label>
+                <select id="area" name="area" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white text-gray-700" required>
+                    <option value="" disabled selected>Maydon hajmini tanlang</option>
+                    <option value="1 sotixgacha (100 kv.m)">1 sotixgacha (100 kv.m)</option>
+                    <option value="1 - 3 sotix">1 – 3 sotix</option>
+                    <option value="3 - 5 sotix">3 – 5 sotix</option>
+                    <option value="5 sotixdan ortiq">5 sotixdan ortiq</option>
+                    <option value="Bilmayman (o'lchash kerak)">Bilmayman (oʻlchash kerak)</option>
+                </select>
+            </div>
+
+            <!-- Step 3: Gazon turi -->
+            <div>
+                <label for="lawn_type" class="block text-sm font-semibold text-gray-700 mb-2">
+                    3. Qaysi usulda gazon qilishni rejalashtiryapsiz?
+                </label>
+                <select id="lawn_type" name="lawn_type" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white text-gray-700" required>
+                    <option value="" disabled selected>Gazon turini tanlang</option>
+                    <option value="Ruon (tayyor roll) gazon">🌱 Ruon (tayyor roll) gazon</option>
+                    <option value="Urug' sepish orqali">🌾 Urugʻ sepish orqali</option>
+                    <option value="Mutaxassis maslahati kerak">❓ Mutaxassis maslahati kerak</option>
+                </select>
+            </div>
+
+            <hr class="border-gray-100 my-4">
+
+            <!-- Contact Info -->
+            <div class="space-y-4">
+                <div>
+                    <label for="fullname" class="block text-sm font-semibold text-gray-700 mb-1">Ismingiz:</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Ismingizni kiriting" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500" required>
+                </div>
+
+                <div>
+                    <label for="phone" class="block text-sm font-semibold text-gray-700 mb-1">Telefon raqamingiz:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+998 90 123 45 67" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500" required>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 transform hover:-translate-y-0.5 shadow-lg shadow-green-600/30">
+                Bepul Hisoblab Berish <i class="fa-solid fa-arrow-right ml-2"></i>
+            </button>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="hidden text-center py-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-full mb-4">
+                <i class="fa-solid fa-circle-check text-3xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Rahmat! Arizangiz qabul qilindi.</h2>
+            <p class="text-gray-600 mb-6">Mutaxassisimiz tez orada siz bilan bogʻlanib, bepul smeta va maslahat beradi.</p>
+            <a href="https://instagram.com" target="_blank" class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold py-3 px-6 rounded-xl hover:opacity-90 transition">
+                <i class="fa-brands fa-instagram mr-2"></i> Bizni Instagram'da kuzating
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            // Bu yerga Telegram bot yoki server integratsiyasini qo'shish mumkin
+            document.getElementById('leadForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
